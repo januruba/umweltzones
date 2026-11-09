@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Leaflet · Low-emission zones</title><link rel="stylesheet" href="../assets/style.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></head><body>
+<header><a class="brand" href="../">◈ Low-emission zones</a><nav><a href="../#integration">Documentation</a><a href="google.html">Google Maps →</a></nav></header>
+<main class="map-page"><p class="eyebrow">RUNNABLE EXAMPLE / LEAFLET</p><h1>Low-emission zone boundaries.</h1><p>GeoJSON over an OpenStreetMap base map. Select a polygon to view its name and status.</p><div class="map-toolbar"><label>Show<select id="status"><option value="active">Active according to source</option><option value="abolished">Abolished according to source</option><option value="all">All records</option></select></label><a href="../data/zones.geojson" download>Download data ↓</a></div><p id="message" role="status">Loading data…</p><div class="legend"><span>Active in source</span><span>Abolished in source</span></div><div id="map" class="map" aria-label="Low-emission zone map"></div><aside class="notice">Boundaries are schematic. Statuses reflect the source dataset; current rules have not been independently verified. Individual records may be components of the same zone.</aside><p class="muted">© Umweltbundesamt (UBA); modified: conversion to WGS84/GeoJSON and attribute normalization. Geodata: GeoNutzV. Base map: © OpenStreetMap contributors.</p></main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script type="module">
+import { loadZones, addLeafletZones } from '../assets/zones.js';
+const message=document.querySelector('#message');
+try {
+  if (!window.L) throw new Error('Could not load Leaflet. Check your connection to the CDN.');
+  const map=L.map('map').setView([51,10],6);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+  map.attributionControl.addAttribution('Zones: &copy; UBA · modified · GeoNutzV');
+  const data=await loadZones('../data/zones.geojson');let layer;
+  function render(){if(layer)map.removeLayer(layer);const status=document.querySelector('#status').value;layer=addLeafletZones(L,map,data,{status});message.textContent=`${layer.getLayers().length} polygon records · retrieved ${data.features[0].properties.retrieved_at.slice(0,10)}`;}
+  render();document.querySelector('#status').addEventListener('change',render);
+} catch(error){message.textContent=error.message;message.className='error';}
+</script></body></html>

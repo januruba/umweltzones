@@ -1,0 +1,530 @@
+{
+  "currentVersion": 11.3,
+  "cimVersion": "3.3.0",
+  "id": 7,
+  "name": "Umweltzonen - flächenhafte Darstellung",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPolygon",
+  "sourceSpatialReference": {
+    "wkid": 102100,
+    "latestWkid": 3857,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -20037700,
+    "falseY": -30241100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "copyrightText": "",
+  "parentLayer": {
+    "id": 5,
+    "name": "Umweltzonen"
+  },
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "uniqueValue",
+      "field1": "status",
+      "uniqueValueGroups": [
+        {
+          "heading": "",
+          "classes": [
+            {
+              "label": "Stufe 3 - Einfahrverbote für Fahrzeuge der Schadstoffgruppe 1 + 2 + 3",
+              "description": "Stufe 3 - Einfahrverbote für Fahrzeuge der Schadstoffgruppe 1 + 2 + 3",
+              "symbol": {
+                "type": "esriSFS",
+                "style": "esriSFSSolid",
+                "color": [
+                  16,
+                  132,
+                  52,
+                  255
+                ],
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": [
+                    38,
+                    66,
+                    0,
+                    255
+                  ],
+                  "width": 1
+                }
+              },
+              "values": [
+                [
+                  "3"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "uniqueValueInfos": [
+        {
+          "symbol": {
+            "type": "esriSFS",
+            "style": "esriSFSSolid",
+            "color": [
+              16,
+              132,
+              52,
+              255
+            ],
+            "outline": {
+              "type": "esriSLS",
+              "style": "esriSLSSolid",
+              "color": [
+                38,
+                66,
+                0,
+                255
+              ],
+              "width": 1
+            }
+          },
+          "value": "3",
+          "label": "Stufe 3 - Einfahrverbote für Fahrzeuge der Schadstoffgruppe 1 + 2 + 3"
+        }
+      ],
+      "fieldDelimiter": ",",
+      "authoringInfo": {
+        "colorRamp": {
+          "type": "multipart",
+          "colorRamps": [
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                150,
+                186,
+                106,
+                255
+              ],
+              "toColor": [
+                150,
+                186,
+                106,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                158,
+                103,
+                235,
+                255
+              ],
+              "toColor": [
+                158,
+                103,
+                235,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                214,
+                77,
+                98,
+                255
+              ],
+              "toColor": [
+                214,
+                77,
+                98,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                116,
+                196,
+                242,
+                255
+              ],
+              "toColor": [
+                116,
+                196,
+                242,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                57,
+                75,
+                128,
+                255
+              ],
+              "toColor": [
+                57,
+                75,
+                128,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                232,
+                161,
+                95,
+                255
+              ],
+              "toColor": [
+                232,
+                161,
+                95,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                219,
+                143,
+                203,
+                255
+              ],
+              "toColor": [
+                219,
+                143,
+                203,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                87,
+                250,
+                131,
+                255
+              ],
+              "toColor": [
+                87,
+                250,
+                131,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                99,
+                230,
+                199,
+                255
+              ],
+              "toColor": [
+                99,
+                230,
+                199,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                128,
+                97,
+                84,
+                255
+              ],
+              "toColor": [
+                128,
+                97,
+                84,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                47,
+                130,
+                112,
+                255
+              ],
+              "toColor": [
+                47,
+                130,
+                112,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                133,
+                49,
+                89,
+                255
+              ],
+              "toColor": [
+                133,
+                49,
+                89,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                245,
+                86,
+                205,
+                255
+              ],
+              "toColor": [
+                245,
+                86,
+                205,
+                255
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": true,
+  "extent": {
+    "xmin": 279621.01544164144,
+    "ymin": 5313096.3448210135,
+    "xmax": 834006.6653432274,
+    "ymax": 5891407.947769687,
+    "spatialReference": {
+      "wkid": 25832,
+      "latestWkid": 25832,
+      "xyTolerance": 0.001,
+      "zTolerance": 2,
+      "mTolerance": 0.001,
+      "falseX": -5120900,
+      "falseY": -9998100,
+      "xyUnits": 450445547.3910538,
+      "falseZ": 0,
+      "zUnits": 1,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "name",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "Shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "Shape",
+      "domain": null
+    },
+    {
+      "name": "name",
+      "type": "esriFieldTypeString",
+      "alias": "NAME",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "bl",
+      "type": "esriFieldTypeString",
+      "alias": "BL",
+      "length": 2,
+      "domain": null
+    },
+    {
+      "name": "bundesland",
+      "type": "esriFieldTypeString",
+      "alias": "BUNDESLAND",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "status",
+      "type": "esriFieldTypeInteger",
+      "alias": "STATUS",
+      "domain": null
+    },
+    {
+      "name": "hotlink",
+      "type": "esriFieldTypeString",
+      "alias": "HOTLINK",
+      "length": 30,
+      "domain": null
+    },
+    {
+      "name": "stufe1",
+      "type": "esriFieldTypeString",
+      "alias": "STUFE1",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "stufe2",
+      "type": "esriFieldTypeString",
+      "alias": "STUFE2",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "stufe3",
+      "type": "esriFieldTypeString",
+      "alias": "STUFE3",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "aufhebung",
+      "type": "esriFieldTypeString",
+      "alias": "Aufhebung",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "Shape_Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape_Length",
+      "domain": null
+    },
+    {
+      "name": "Shape_Area",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape_Area",
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "Shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "Shape"
+  },
+  "indexes": [
+    {
+      "name": "FDO_OBJECTID",
+      "fields": "OBJECTID",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "FDO_Shape",
+      "fields": "Shape",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsAdvancedQueryRelated": true,
+    "supportsQueryRelatedPagination": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": false,
+    "supportsCurrentUserQueries": true
+  },
+  "supportsDatumTransformation": true,
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasGeometryProperties": true,
+  "geometryProperties": {
+    "shapeAreaFieldName": "Shape_Area",
+    "shapeLengthFieldName": "Shape_Length",
+    "units": "esriMeters",
+    "mapUnits": {
+      "uwkid": 9001
+    }
+  },
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true,
+  "serviceItemId": "0be9d19d9dee4b41a18951faf3e2df52"
+}

@@ -1,0 +1,13 @@
+{
+  "publisher": "Umweltbundesamt (UBA)",
+  "service_url": "https://datahub.uba.de/server/rest/services/Lu/LU_UWZ_DFV_LRP/MapServer/7",
+  "query_url": "https://datahub.uba.de/server/rest/services/Lu/LU_UWZ_DFV_LRP/MapServer/7/query?where=1%3D1&outFields=%2A&outSR=4326&f=geojson",
+  "retrieved_at": "2026-11-09T12:55:01.786963+00:00",
+  "sha256": "742ef8618f4743100305b698e9bd7b0311bc9fae42016adf88ac34a7a32b8087",
+  "feature_count": 60,
+  "license": "GeoNutzV",
+  "license_url": "https://sg.geodatenzentrum.de/web_public/gdz/lizenz/geonutzv.pdf",
+  "license_metadata_url": "https://md.umwelt.info/dataset/metadaten-uba/237cb80f-9129-435b-a3da-2df8fef0d0dc",
+  "attribution": "© Umweltbundesamt (UBA); modified: conversion to WGS84/GeoJSON and attribute normalization.",
+  "independently_verified": false
+}

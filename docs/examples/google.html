@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Google Maps · Low-emission zones</title><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header><a class="brand" href="../">◈ Low-emission zones</a><nav><a href="../#integration">Documentation</a><a href="leaflet.html">Leaflet →</a></nav></header>
+<main class="map-page"><p class="eyebrow">RUNNABLE EXAMPLE / GOOGLE MAPS</p><h1>The same data in Google Maps.</h1><p>Enter your own Maps JavaScript API key with this domain allowed and billing enabled. The key is sent to Google to load the map; this demo does not store it.</p>
+<form id="form" class="map-toolbar"><label>Google Maps API key<input id="key" type="password" autocomplete="off" required placeholder="Your API key"></label><button id="load" type="submit">Load map</button></form><p id="message" role="status">Enter an API key to load the map.</p>
+<label>Show<select id="status" disabled><option value="active">Active according to source</option><option value="abolished">Abolished according to source</option><option value="all">All records</option></select></label><div id="map" class="map" aria-label="Low-emission zone map"></div>
+<aside class="notice">Boundaries are schematic and do not include all exemptions. Statuses reflect the source dataset; current rules have not been independently verified.</aside><p class="muted">© Umweltbundesamt (UBA); modified: conversion to WGS84/GeoJSON and attribute normalization. Geodata: GeoNutzV. Base map: Google Maps, subject to its terms.</p></main>
+<script type="module">
+import { loadZones, addGoogleZones } from '../assets/zones.js';
+const message=document.querySelector('#message'),button=document.querySelector('#load'),status=document.querySelector('#status');let map,layer,data;
+function fail(text){message.textContent=text;message.className='error';}
+window.gm_authFailure=()=>fail('Google rejected the key. Check Maps JavaScript API access, billing and allowed HTTP referrers.');
+function render(){if(layer)layer.setMap(null);layer=addGoogleZones(google,map,data,{status:status.value});let count=0;layer.forEach(()=>count++);message.className='';message.textContent=`${count} polygon records · retrieved ${data.features[0].properties.retrieved_at.slice(0,10)}`;}
+document.querySelector('#form').addEventListener('submit',async event=>{
+  event.preventDefault();button.disabled=true;message.textContent='Loading Google Maps…';message.className='';
+  const key=document.querySelector('#key').value.trim();
+  try{
+    data=await loadZones('../data/zones.geojson');
+    await new Promise((resolve,reject)=>{
+      const timeout=setTimeout(()=>reject(new Error('Google Maps timed out. Reload the page and try again.')),30000);
+      window.initZoneMap=()=>{clearTimeout(timeout);resolve();};
+      const script=document.createElement('script');const url=new URL('https://maps.googleapis.com/maps/api/js');url.search=new URLSearchParams({key,callback:'initZoneMap',loading:'async',v:'weekly',language:'en'});script.src=url.href;script.async=true;script.onerror=()=>{clearTimeout(timeout);reject(new Error('Could not load Google Maps. Reload the page and try again.'));};document.head.append(script);
+    });
+    document.querySelector('#key').value='';map=new google.maps.Map(document.querySelector('#map'),{center:{lat:51,lng:10},zoom:6});status.disabled=false;render();status.addEventListener('change',render);
+  }catch(error){fail(error.message);}
+});
+</script></body></html>

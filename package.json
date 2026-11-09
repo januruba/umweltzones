@@ -1,0 +1,13 @@
+{
+  "name": "low-emission-zones",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Low-emission zone boundaries, catalogue and Leaflet / Google Maps examples",
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "test": "python3 -m unittest discover -s tests && node --test tests/adapters.test.js",
+    "serve": "python3 -m http.server 8080 --directory docs",
+    "update:uba": "python3 scripts/fetch_uba.py"
+  }
+}

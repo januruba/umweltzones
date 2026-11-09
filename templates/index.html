@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Low-emission zones · data and maps</title><meta name="description" content="Open low-emission zone data and GeoJSON boundaries for Leaflet and Google Maps, with documentation, runnable demos and live examples.">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<header><a class="brand" href="./">◈ Low-emission zones</a><nav aria-label="Main navigation"><a href="#data">Data</a><a href="#live-examples">Live examples</a><a href="#integration">Integration</a><a href="#catalogue">Zone catalogue</a><a href="#sources">Sources</a></nav></header>
+<main><section class="hero"><p class="eyebrow">OPEN MAP DATA / v0.1.1</p><h1>Low-emission zones.<br>One dataset, two maps.</h1><p class="lead">A zone catalogue and GeoJSON boundaries. Use the same data in Leaflet and Google Maps, without converting to a proprietary format.</p><div class="actions"><a class="button" href="examples/leaflet.html">Open the map ↗</a><a class="button secondary" href="data/zones.geojson" download>Download GeoJSON ↓</a></div>
+<div class="stats"><div><strong>{{COUNT}}</strong><span>polygon records</span></div><div><strong>{{ACTIVE}}</strong><span>active according to source</span></div><div><strong>{{ABOLISHED}}</strong><span>abolished according to source</span></div><div><strong>DE</strong><span>current coverage</span></div></div></section>
+<aside class="notice"><strong>Data status:</strong> retrieved {{DATE}}. Zone statuses reflect the source dataset and have not been independently verified as of the retrieval date. Boundaries are schematic and do not include every exemption. Several polygon records may belong to one regulatory zone.</aside>
+<section id="live-examples"><p class="eyebrow">LIVE EXAMPLES</p><h2>Explore low-emission zone maps in use.</h2><div class="grid"><article class="card"><h3>GreenStickerGermany.com</h3><p>An English-language map and guide to low-emission zones in Germany.</p><a href="https://greenstickergermany.com/low-emission-zones/">View the live example →</a></article><article class="card"><h3>EkoPlaketa.cz</h3><p>A Czech-language map and overview of German low-emission zones.</p><a href="https://www.ekoplaketa.cz/mapa-emisnich-zon/">View the live example →</a></article></div></section>
+<section id="data"><p class="eyebrow">01 / DATA EXPORTS</p><h2>Choose the data you need.</h2><p>Coordinates use WGS84 in <code>[longitude, latitude]</code> order. Each record includes a stable ID, status, source and licence. Geometries support multiple components and interior holes.</p>
+<div class="table-wrap"><table><thead><tr><th>File</th><th>Contents</th></tr></thead><tbody>
+<tr><td><a href="data/zones.json">zones.json</a></td><td>Catalogue with links to individual geometries</td></tr>
+<tr><td><a href="data/zones.geojson">zones.geojson</a></td><td>All polygon records</td></tr>
+<tr><td><a href="data/active.geojson">active.geojson</a></td><td>Records marked active by the source</td></tr>
+<tr><td><a href="data/abolished.geojson">abolished.geojson</a></td><td>Historical boundaries of abolished zones</td></tr>
+<tr><td><a href="data/countries/DE.geojson">countries/DE.geojson</a></td><td>Country export: Germany</td></tr>
+<tr><td><a href="data/manifest.json">manifest.json</a></td><td>Version, retrieval date and record counts</td></tr>
+</tbody></table></div><p class="muted">Load these files directly from this site. For stable integrations, keep your own copy or pin a specific repository commit. These are static files with no server API or availability guarantee.</p></section>
+<section id="integration"><p class="eyebrow">02 / INTEGRATION</p><h2>GeoJSON for Leaflet and Google Maps.</h2><div class="grid"><article class="card"><h3>Leaflet</h3><p>A boundary overlay on your chosen base map. The runnable example uses Leaflet 1.9.4 and OpenStreetMap.</p><pre><code>const response = await fetch('./data/active.geojson');
+if (!response.ok) throw new Error(response.status);
+const zones = await response.json();
+const layer = L.geoJSON(zones).addTo(map);
+if (layer.getBounds().isValid()) {
+  map.fitBounds(layer.getBounds());
+}</code></pre><a href="examples/leaflet.html">Run the Leaflet example →</a></article>
+<article class="card"><h3>Google Maps</h3><p>The Google Maps Data layer loads the same GeoJSON. Running the example requires your own Maps JavaScript API key.</p><pre><code>const response = await fetch('./data/active.geojson');
+if (!response.ok) throw new Error(response.status);
+const zones = await response.json();
+map.data.addGeoJson(zones);
+map.data.setStyle({
+  fillColor: '#19754a', fillOpacity: 0.18,
+  strokeColor: '#19754a', strokeWeight: 2
+});</code></pre><a href="examples/google.html">Run the Google Maps example →</a></article></div>
+<h3>Helper functions</h3><p>The <a href="assets/zones.js">assets/zones.js</a> module handles data loading, filtering by country and status, styling, popups and fitting map bounds. Load Leaflet or Google Maps separately.</p>
+<pre><code>import { loadZones, addLeafletZones, addGoogleZones } from './assets/zones.js';
+const data = await loadZones('./data/zones.geojson');
+const leafletLayer = addLeafletZones(L, map, data, { country: 'DE' });
+// Alternatively, in a Google Maps application:
+const googleLayer = addGoogleZones(google, googleMap, data, { status: 'active' });</code></pre>
+<p>The default status is <code>active</code>. Set <code>status: 'all'</code> to include historical records. Use <code>fitBounds: false</code> to retain the current viewport. The Leaflet helper returns <code>L.GeoJSON</code>; the Google helper returns an independent <code>google.maps.Data</code> layer. Remove them with <code>map.removeLayer(layer)</code> or <code>layer.setMap(null)</code>, respectively.</p>
+<p class="muted">Do not reverse GeoJSON coordinates: both libraries handle their native order. Public OSM tiles have a separate usage policy; choose an appropriate tile provider for production.</p></section>
+<section id="catalogue"><p class="eyebrow">03 / CATALOGUE</p><h2>Low-emission zone catalogue.</h2><p>Select a name to open its GeoJSON. The source records the Cologne extension and two parts of Marburg separately.</p>
+<div class="filters"><label>Search zones or regions<input id="search" type="search" placeholder="For example, München" autocomplete="off"></label><label>Status<select id="status"><option value="all">All records</option><option value="active">Active in source</option><option value="abolished">Abolished in source</option></select></label></div><p id="results" aria-live="polite">{{COUNT}} records</p>
+<div class="table-wrap"><table id="zones"><thead><tr><th>Zone / zone component</th><th>Region</th><th>Status</th><th>Source abolition date</th></tr></thead><tbody>{{ROWS}}</tbody></table></div></section>
+<section id="schema"><p class="eyebrow">04 / FORMAT</p><h2>Readable data with traceable provenance.</h2><div class="table-wrap"><table><thead><tr><th>Property</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>id, name, country, region</td><td>Record identity, source name and geographic classification</td></tr><tr><td>type</td><td>low_emission_zone; currently German Umweltzonen only</td></tr><tr><td>status</td><td>active / abolished; the format also permits planned / unknown</td></tr><tr><td>valid_from, valid_to</td><td>Source first-stage date and effective abolition date; unknown dates are null</td></tr><tr><td>retrieved_at, verified_at</td><td>Retrieval and independent verification times; verified_at is currently null</td></tr><tr><td>status_basis, geometry_accuracy</td><td>source_snapshot and schematic describe the scope of the data</td></tr><tr><td>source</td><td>Publisher, source ID, URL, licence and attribution</td></tr><tr><td>source_attributes</td><td>Original UBA attributes, including status codes and stage dates</td></tr></tbody></table></div>
+<p><code>valid_to</code> is the effective abolition date. IDs do not change when statuses change. The dataset does not provide complete rules for fuels, emission classes, time-based exemptions or individual streets, and cannot independently determine whether a vehicle may enter a zone.</p></section>
+<section id="sources"><p class="eyebrow">05 / SOURCES AND UPDATES</p><h2>Every geometry retains its source.</h2><p>German data comes from the <a href="https://datahub.uba.de/server/rest/services/Lu/LU_UWZ_DFV_LRP/MapServer/7">UBA polygon layer</a>. It includes active and abolished zones. Records are filtered by the <code>status</code> attribute, not the layer name.</p>
+<p>Geodata licence: <a href="https://sg.geodatenzentrum.de/web_public/gdz/lizenz/geonutzv.pdf">GeoNutzV</a>, as stated in the <a href="https://md.umwelt.info/dataset/metadaten-uba/237cb80f-9129-435b-a3da-2df8fef0d0dc">service metadata</a>. Attribution: <strong>© Umweltbundesamt (UBA); modified: conversion to WGS84/GeoJSON and attribute normalization.</strong> Project code is MIT-licensed; this does not relicense source geodata.</p>
+<p>Updates are manual: run <code>npm run update:uba</code>, then <code>npm run build</code>, review the changes and run <code>npm test</code>. Downloading a snapshot does not independently verify current legal rules. GitHub Actions checks data and publishes the documentation when the main branch changes.</p>
+<p>References: <a href="https://leafletjs.com/examples/geojson/">Leaflet GeoJSON</a> · <a href="https://developers.google.com/maps/documentation/javascript/datalayer">Google Maps Data layer</a> · <a href="https://gis.uba.de/website/umweltzonen/">UBA overview</a> · <a href="https://operations.osmfoundation.org/policies/tiles/">OSM tile usage policy</a>.</p></section></main>
+<footer><span>◈ Low-emission zones</span><span>GeoJSON · Leaflet · Google Maps</span><a href="#">Back to top ↑</a></footer>
+<script type="module">const search=document.querySelector('#search'),status=document.querySelector('#status'),rows=[...document.querySelectorAll('#zones tbody tr')];const fold=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();function filter(){let count=0;for(const row of rows){const show=fold(row.textContent).includes(fold(search.value))&&(status.value==='all'||row.querySelector('.badge').classList.contains(status.value));row.hidden=!show;if(show)count++;}document.querySelector('#results').textContent=`${count} records`;}search.addEventListener('input',filter);status.addEventListener('change',filter);</script>
+</body></html>
