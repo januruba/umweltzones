@@ -13,7 +13,6 @@ Low-emission zone catalogue and GeoJSON boundaries, with examples for Leaflet an
 - A JSON catalogue, combined GeoJSON, active and abolished subsets, country exports and individual files.
 - English documentation, a searchable catalogue and runnable map examples.
 - JavaScript helpers for Leaflet 1.9 and the Google Maps JavaScript API.
-- Reproducible builds, data checks and a GitHub Pages workflow.
 
 Polygon records are not the same as distinct regulatory zones. The source records Köln, Köln (Erweiterung 2019), Marburg (Zone Ost) and Marburg (Zone West) separately. Source names and geometries are preserved.
 
@@ -38,7 +37,7 @@ data/                 Generated public exports
 sources/uba/          Source snapshot, provenance, checksum and stable ID registry
 src/index.js          Leaflet and Google Maps helpers
 templates/index.html  Documentation source template
-docs/                 Ready-to-publish GitHub Pages content, including data
+docs/                 GitHub Pages content, including data
 scripts/              Source retrieval and static build
 tests/                Data, geometry and adapter checks
 .github/workflows/    Validation and GitHub Pages deployment
@@ -125,12 +124,6 @@ git diff
 
 Review source changes and licensing before publishing. Downloading data does not independently verify current rules. Do not edit generated `data/` or `docs/data/` files manually. Assign new names an explicit ID in `sources/uba/ids.json`. Keep the same ID when a name or status changes.
 
-## GitHub Pages
-
-Upload this directory's contents to a repository with a `main` branch, including `.github`. Set **Settings → Pages → Source → GitHub Actions**. On a push to `main`, the workflow builds and tests the project and publishes `docs/`. Pull requests only build and test. You can also start publication through **Actions → Validate and publish GitHub Pages → Run workflow**.
-
-Internal links use relative paths and support GitHub Pages project URLs. The workflow does not schedule automatic source downloads.
-
 ## Sources and licensing
 
 Code: [MIT](LICENSE). German source geodata: [GeoNutzV](https://sg.geodatenzentrum.de/web_public/gdz/lizenz/geonutzv.pdf), as stated in the [service metadata](https://md.umwelt.info/dataset/metadaten-uba/237cb80f-9129-435b-a3da-2df8fef0d0dc). See [DATA-LICENSE.md](DATA-LICENSE.md) for attribution and separate data terms.
@@ -139,4 +132,3 @@ Code: [MIT](LICENSE). German source geodata: [GeoNutzV](https://sg.geodatenzentr
 - [UBA zone overview](https://gis.uba.de/website/umweltzonen/)
 - [Leaflet: GeoJSON](https://leafletjs.com/examples/geojson/)
 - [Google Maps: Data layer](https://developers.google.com/maps/documentation/javascript/datalayer)
-- [GitHub Pages: custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
