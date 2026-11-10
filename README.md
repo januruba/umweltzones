@@ -1,5 +1,7 @@
 # Low-emission zones · GeoJSON, Leaflet and Google Maps
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Overview-blue)](https://januruba.github.io/umweltzones/)
+
 Low-emission zone catalogue and GeoJSON boundaries, with examples for Leaflet and Google Maps and documentation ready for GitHub Pages. The initial dataset covers Germany using public data from the German Environment Agency (Umweltbundesamt, UBA).
 
 ## Live examples
@@ -17,6 +19,8 @@ Low-emission zone catalogue and GeoJSON boundaries, with examples for Leaflet an
 Polygon records are not the same as distinct regulatory zones. The source records Köln, Köln (Erweiterung 2019), Marburg (Zone Ost) and Marburg (Zone West) separately. Source names and geometries are preserved.
 
 **This is a source snapshot, not an independently verified current list of entry rules.** See `data/manifest.json` for its retrieval date. UBA boundaries are schematic and do not include all exemptions. Additional diesel restrictions and individual road restrictions are not comprehensively covered.
+
+The full list is available at [januruba.github.io/umweltzones](https://januruba.github.io/umweltzones/).
 
 ## Run locally
 
@@ -70,6 +74,10 @@ const layer = addLeafletZones(L, map, data, { country: 'DE' });
 ```
 
 Runnable example: `docs/examples/leaflet.html`. The example uses public OpenStreetMap tiles, which require attribution and compliance with the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/). This repository provides zone boundaries; it does not distribute base map tiles.
+
+
+* **Live Demo:** [Leaflet Implementation](https://januruba.github.io/umweltzones/examples/leaflet.html)
+* **Local Source:** `docs/examples/leaflet.html`
 
 ## Google Maps
 
